@@ -1,0 +1,20 @@
+{
+  "name": "blogarize",
+  "version": "1.0.0",
+  "description": "A tool that helps you summarize, blog, and post about a video",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "EricDevelops",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theEricDevelops/blogarize.git"
+  },
+  "bugs": {
+    "url": "https://github.com/theEricDevelops/blogarize/issues"
+  },
+  "homepage": "https://github.com/theEricDevelops/blogarize#readme"
+}
