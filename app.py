@@ -35,7 +35,7 @@ app.config['steps'] = {
 }
 
 logging.basicConfig()
-fh = logging.FileHandler('ytsummerizer.log', mode='w')
+fh = logging.FileHandler(f'logs/blogarize.log', mode='w')
 fh.setLevel(logging.DEBUG)  # Set the handler's level to DEBUG
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(lineno)d - %(funcName)s - %(message)s')
 fh.setFormatter(formatter)
@@ -115,7 +115,7 @@ def upload_file():
                 if not transcript.startswith('Could not transcribe'):
                     summary_filepath = audio_filepath.replace('.wav', '.md')
                     # Summarize the transcription
-                    summary = call_openai(f"Give me an outline, bullet points, and summary of this text: {transcript}", summary_filepath)
+                    summary = call_openai(f"Give me an outline and summary of this text: {transcript}", summary_filepath)
                     # Check if summary was a success
                     if not summary.startswith('Could not summarize'):
                         session['progress'] = app.config.get('steps')['Summarized']
@@ -123,7 +123,7 @@ def upload_file():
                         blog_filepath = audio_filepath.replace('.wav', '-blog.html')
                         blog = create_blog(title, transcript, summary, blog_filepath)
                         dalle_filepath = audio_filepath.replace('.wav', '-dalle.png')
-                        call_dalle(prompt=f"Generate an image based on the blog post you created. Do not, under any circumstances, put words in this image. {blog}.", filename=dalle_filepath, model="dall-e-3", size="1792x1024", n=1, quality="hd")
+                        call_dalle(prompt=f"Generate an image based on the blog post you created. Do not, under any circumstances, put words in this image. {summary}.", filename=dalle_filepath, model="dall-e-3", size="1792x1024", n=1, quality="hd")
 
                         return render_template('output.html', summary=summary, transcript=transcript, title=title, blog=blog, header_img=os.path.basename(dalle_filepath))
                     else:
@@ -154,4 +154,4 @@ def progress():
     return Response(generate(), mimetype="text/event-stream")
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(host="127.0.0.1", port=5000, debug = True)

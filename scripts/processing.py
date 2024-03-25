@@ -28,7 +28,7 @@ from bs4 import BeautifulSoup
 from app import app
 
 logging.basicConfig()
-fh = logging.FileHandler('ytsummerizer.log', mode='w')
+fh = logging.FileHandler(f'logs/blogarize.log', mode='w')
 fh.setLevel(logging.DEBUG)  # Set the handler's level to DEBUG
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(lineno)d - %(funcName)s - %(message)s')
 fh.setFormatter(formatter)
@@ -57,10 +57,10 @@ def download_youtube_video(
         logging.info(f"Downloaded {filename}")
         return filename
     except Exception as e:
-        logging.error(f"An error occurred in 'process_youtube_link' (processing.py): {e}")
+        logging.error(f"An error occurred in 'download_youtube_video' (processing.py): {e}")
         return str(e)
     
-def on_yt_progress(stream, bytes_remaining):
+def on_yt_progress(stream, chunks, bytes_remaining):
     total_size = stream.filesize
     bytes_downloaded = total_size - bytes_remaining
     percentage_of_completion = (bytes_downloaded / total_size) * 100

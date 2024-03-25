@@ -1,5 +1,6 @@
 # Blogarize Specific
 uploads/
+logs/*.*
 
 # Python
 __pycache__/
