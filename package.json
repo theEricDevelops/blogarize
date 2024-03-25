@@ -2,13 +2,13 @@
   "name": "blogarize",
   "version": "1.0.0",
   "description": "A tool that helps you summarize, blog, and post about a video",
-  "main": "index.js",
+  "main": "app.py",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "EricDevelops",
-  "license": "ISC",
+  "license": "AGPL-3.0-only",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/theEricDevelops/blogarize.git"
