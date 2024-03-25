@@ -1,0 +1,14 @@
+# requirements.txt
+flask>=1.1.0
+flask-wtf>=0.14.3
+werkzeug>=1.0.0
+wtforms>=2.3.3
+requests>=2.25.1
+pytube>=10.8.5
+moviepy>=1.0.3
+speechrecognition>=3.8.1
+mutagen>=1.45.1
+openai>=0.27.0
+python-dotenv>=0.17.0
+markdown>=3.3.3
+beautifulsoup4>=4.9.3
